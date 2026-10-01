@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Smart Environmental Monitoring | IoT + GenAI
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <!-- ==================================================
+             HEADER
+        =================================================== -->
+
+        <header>
+
+            <div>
+
+                <p class="eyebrow">
+                    IoT + Generative AI
+                </p>
+
+                <h1>
+                    Smart Environmental Monitoring
+                </h1>
+
+                <p class="subtitle">
+                    Real-time environmental monitoring using
+                    DHT11, ESP8266 and local GenAI analysis.
+                </p>
+
+            </div>
+
+
+            <div class="connection-status">
+
+                <span class="status-dot"></span>
+
+                <span id="connectionText">
+                    Monitoring
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==================================================
+             MAIN CONTENT
+        =================================================== -->
+
+        <main>
+
+
+            <!-- ==================================================
+                 LIVE SENSOR READINGS
+            =================================================== -->
+
+            <section class="sensor-grid">
+
+
+                <!-- Temperature -->
+
+                <div class="sensor-card">
+
+                    <div class="card-icon">
+                        🌡️
+                    </div>
+
+                    <div>
+
+                        <p class="card-label">
+                            Temperature
+                        </p>
+
+                        <div class="reading">
+
+                            <span id="temperature">
+                                --
+                            </span>
+
+                            <span class="unit">
+                                °C
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Humidity -->
+
+                <div class="sensor-card">
+
+                    <div class="card-icon">
+                        💧
+                    </div>
+
+                    <div>
+
+                        <p class="card-label">
+                            Humidity
+                        </p>
+
+                        <div class="reading">
+
+                            <span id="humidity">
+                                --
+                            </span>
+
+                            <span class="unit">
+                                %
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- ==================================================
+                 ENVIRONMENT STATUS
+            =================================================== -->
+
+            <section class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <p class="section-label">
+                            CURRENT CONDITION
+                        </p>
+
+                        <h2>
+                            Environment Status
+                        </h2>
+
+                    </div>
+
+
+                    <span id="environmentStatus"
+                          class="environment-badge">
+
+                        Waiting for data
+
+                    </span>
+
+                </div>
+
+
+                <div class="information-grid">
+
+
+                    <!-- Dynamic hardware source -->
+
+                    <div>
+
+                        <span class="info-label">
+                            Data Source
+                        </span>
+
+                        <strong id="dataSource">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Latest reading time -->
+
+                    <div>
+
+                        <span class="info-label">
+                            Last Reading
+                        </span>
+
+                        <strong id="lastUpdate">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 REAL-TIME SENSOR HISTORY
+            =================================================== -->
+
+            <section class="panel history-panel">
+
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <p class="section-label">
+                            REAL-TIME HISTORY
+                        </p>
+
+                        <h2>
+                            Temperature & Humidity History
+                        </h2>
+
+                    </div>
+
+
+                    <span class="history-badge">
+                        Last 30 Readings
+                    </span>
+
+                </div>
+
+
+                <p class="history-description">
+                    Real-time environmental readings collected
+                    from the DHT11 sensor through the ESP8266.
+                </p>
+
+
+                <div class="chart-container">
+
+                    <canvas id="environmentChart"></canvas>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- ==================================================
+                 GENERATIVE AI
+            =================================================== -->
+
+            <section class="panel ai-panel">
+
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <p class="section-label">
+                            GENERATIVE AI
+                        </p>
+
+                        <h2>
+                            GenAI Environmental Assistant
+                        </h2>
+
+                    </div>
+
+
+                    <span class="ai-model">
+                        Ollama · Llama 3.2
+                    </span>
+
+                </div>
+
+
+                <p class="ai-description">
+                    Analyze the real-time DHT11 environmental
+                    readings using the locally running
+                    Llama 3.2 model.
+                </p>
+
+
+                <button id="analyzeButton"
+                        type="button">
+
+                    Analyze Current Environment
+
+                </button>
+
+
+                <div id="aiResponse"
+                     class="ai-response">
+
+                    <p class="placeholder">
+                        AI environmental analysis will
+                        appear here.
+                    </p>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+        <!-- ==================================================
+             FOOTER
+        =================================================== -->
+
+        <footer>
+
+            <span>
+                Smart Environmental Monitoring and
+                GenAI Assistant Using IoT
+            </span>
+
+            <span>
+                DHT11 · ESP8266 · Flask · Ollama · Llama 3.2
+            </span>
+
+        </footer>
+
+
+    </div>
+
+
+    <!-- ======================================================
+         LOCAL JAVASCRIPT LIBRARIES
+    ======================================================= -->
+
+    <script src="{{ url_for('static', filename='js/chart.umd.min.js') }}">
+    </script>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+
+
+</body>
+
+</html>
